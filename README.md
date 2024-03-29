@@ -18,12 +18,12 @@ Can be found on telegram as [MILC Security Bot](https://t.me/milc_secure_bot).
 
 Once you've setup your database and your configuration (see below) is complete, simply run:
 
-`python3 -m tg_bot`
+`python -m tg_bot`
 
 
 ## Setting up the bot (Read this before trying to use!):
-Please make sure to use python3.6, as I cannot guarantee everything will work as expected on older python versions!
-This is because markdown parsing is done by iterating through a dict, which are ordered by default in 3.6.
+Please make sure to use python3.8.10, as I cannot guarantee everything will work as expected on older python versions!
+This is because markdown parsing is done by iterating through a dict, which are ordered by default in 3.8.10.
 
 ### Configuration
 
@@ -43,16 +43,16 @@ from tg_bot.sample_config import Config
 
 
 class Development(Config):
-    OWNER_ID = 254318997  # my telegram ID
-    OWNER_USERNAME = "SonOfLars"  # my telegram username
+    OWNER_ID = 123456789  # my telegram ID
+    OWNER_USERNAME = "Kodekloner"  # my telegram username
     API_KEY = "your bot api key"  # my api key, as provided by the botfather
     SQLALCHEMY_DATABASE_URI = 'postgresql://username:password@localhost:5432/database'  # sample db credentials
     MESSAGE_DUMP = '-1234567890' # some group chat that your bot is a member of
     USE_MESSAGE_DUMP = True
-    SUDO_USERS = [18673980, 83489514]  # List of id's for users which have sudo access to the bot.
+    SUDO_USERS = [123456789, 234567890]  # List of id's for users which have sudo access to the bot.
     LOAD = []
     NO_LOAD = ['translation']
-    SW_API = "Your smap watch api"
+    SW_API = "Your smap watch api token"
     CHATS_DIR = SCRIPT_PATH + "/chats"
     CAPTCHAS_DIR = SCRIPT_PATH + "/captchas"
     INIT_CAPTCHA_DIFFICULTY_LEVEL = 3
