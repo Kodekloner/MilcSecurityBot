@@ -91,7 +91,6 @@ The following env variables are supported:
  - `PORT`: Port to use for your webhooks
  - `DEL_CMDS`: Whether to delete commands from users which don't have rights to use that command
  - `STRICT_GBAN`: Enforce gbans across new groups as well as old groups. When a gbanned user talks, he will be banned.
- - `WORKERS`: Number of threads to use. 8 is the recommended (and default) amount, but your experience may vary.
  - `SW_API`: Swap watcg API token
  - `CHATS_DIR`: directory path where the chat data are stored for the captcha
  - `CAPTCHAS_DIR`: directory path where the captcha data are stored
@@ -103,6 +102,7 @@ The following env variables are supported:
  - `INIT_TITLE`: default chat title
  - `INIT_LINK`: default chat link
  - `INIT_ENABLE`: default captcha setting, True or False
+ - `WORKERS`: Number of threads to use. 8 is the recommended (and default) amount, but your experience may vary.
  __Note__ that going crazy with more threads wont necessarily speed up your bot, given the large amount of sql data
  accesses, and the way python asynchronous calls work.
  - `BAN_STICKER`: Which sticker to use when banning people.
