@@ -52,13 +52,12 @@ def keyboard(bot, update):
 
     update.effective_message.reply_text("keyboard updated",
                                             reply_markup=ReplyKeyboardMarkup([[
-                                                KeyboardButton("/help - Bot Help"), 
-                                                KeyboardButton("/donate - Donate"),
+                                                KeyboardButton("/help - Bot Help"),
                                                 KeyboardButton("/notes - Notes")],
-                                             [KeyboardButton(btn1)], 
+                                             [KeyboardButton(btn1)],
                                              [KeyboardButton(btn2)],
                                              [KeyboardButton(btn3)]]))
-    
+
 
 KEYBOARD_HANDLER = CommandHandler(["keyboard"], keyboard)
 dispatcher.add_handler(KEYBOARD_HANDLER)
