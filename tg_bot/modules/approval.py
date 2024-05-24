@@ -15,7 +15,7 @@ from tg_bot.modules.helper_funcs.chat_status import bot_admin, user_admin, is_us
 from tg_bot.modules.helper_funcs.extraction import extract_user_and_text, extract_user
 from tg_bot.modules.helper_funcs.string_handling import extract_time
 # from tg_bot.modules.log_channel import loggable
-from tg_bot.modules.helper_funcs.connection import check_conn
+# from tg_bot.modules.helper_funcs.connection import check_conn
 from tg_bot.modules.helper_funcs.filters import CustomFilters
 
 
