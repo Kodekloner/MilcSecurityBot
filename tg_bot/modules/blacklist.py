@@ -7,6 +7,7 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, MessageHandler, Filters, run_async
 
 import tg_bot.modules.sql.blacklist_sql as sql
+from tg_bot.modules.sql import approval_sql
 from tg_bot import dispatcher, LOGGER
 from tg_bot.modules.disable import DisableAbleCommandHandler
 from tg_bot.modules.helper_funcs.chat_status import user_admin, user_not_admin
@@ -114,6 +115,9 @@ def del_blacklist(bot: Bot, update: Update):
     message = update.effective_message  # type: Optional[Message]
     to_match = extract_text(message)
     if not to_match:
+        return
+
+    if approval_sql.is_user_approved(user.id):
         return
 
     chat_filters = sql.get_chat_blacklist(chat.id)

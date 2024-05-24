@@ -10,6 +10,7 @@ from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import mention_html
 
 import tg_bot.modules.sql.locks_sql as sql
+from tg_bot.modules.sql import approval_sql
 from tg_bot import dispatcher, SUDO_USERS, LOGGER
 from tg_bot.modules.disable import DisableAbleCommandHandler
 from tg_bot.modules.helper_funcs.chat_status import can_delete, is_user_admin, user_not_admin, user_admin, \
@@ -195,6 +196,9 @@ def del_lockables(bot: Bot, update: Update):
     chat = update.effective_chat  # type: Optional[Chat]
     message = update.effective_message  # type: Optional[Message]
 
+    if approval_sql.is_user_approved(user.id):
+        return
+
     for lockable, filter in LOCK_TYPES.items():
         if filter(message) and sql.is_locked(chat.id, lockable) and can_delete(chat, bot.id):
             if lockable == "bots":
@@ -225,6 +229,10 @@ def del_lockables(bot: Bot, update: Update):
 def rest_handler(bot: Bot, update: Update):
     msg = update.effective_message  # type: Optional[Message]
     chat = update.effective_chat  # type: Optional[Chat]
+    
+    if approval_sql.is_user_approved(user.id):
+        return
+    
     for restriction, filter in RESTRICTION_TYPES.items():
         if filter(msg) and sql.is_restr_locked(chat.id, restriction) and can_delete(chat, bot.id):
             try:
